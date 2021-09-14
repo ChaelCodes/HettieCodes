@@ -5,8 +5,6 @@ def move(board)
   puts board
 
   # Choose a random direction to move in
-  possible_moves = ["up", "down", "left", "right"]
-  move = possible_moves.sample
-  puts "MOVE: " + move
-  { "move": move }
+  possible_moves = ["up", "left", "down", "right"]
+  { "move": possible_moves.first }
 end
