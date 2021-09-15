@@ -39,8 +39,46 @@ describe "move" do
       })
     end
 
-    it "moves left" do
+    it "moves down" do
       is_expected.to eq({move: "down", shout: "I'm at 0, 10!"})
     end
+  end
+
+  context "when Hettie is about to run into themself" do
+    let(:request) do
+      create_move_request({ you: {
+        body: [
+          { x: 0, y: 10 }
+        ],
+        head: {
+          x: 0,
+          y: 9 }
+        }
+      })
+    end
+
+    it "moves down" do
+      is_expected.to eq({move: "down", shout: "I'm at 0, 9!"})
+    end 
+  end
+end
+
+describe '#can_move_direction?' do
+  subject { can_move_direction?(board, me, direction) }
+
+  let(:board) do
+    { "height": 11, "width": 11 }
+  end
+
+  context "when Hettie is moving downwards" do
+    let(:me) do
+      {
+        "body": [ { "x": 0, "y": 10 } ],
+        "head": { "x": 0, "y": 9 } 
+      }
+    end
+    let(:direction) { direction = "down" }
+
+    it { is_expected.to be_truthy }
   end
 end
