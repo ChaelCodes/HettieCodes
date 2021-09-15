@@ -11,7 +11,7 @@ describe "move" do
       }) }
 
   it "moves up" do
-    is_expected.to eq({move: "up", shout: "Let's move up!"})
+    is_expected.to eq({move: "up", shout: "I'm at 5, 6!"})
   end
 
   context "when Hettie is about to run into a wall" do
@@ -19,13 +19,13 @@ describe "move" do
       create_move_request({ you: { 
         head: { 
           x: 5,          
-          y: 0 }
+          y: 10 }
         }
       })
     end
 
     it "moves left" do
-      is_expected.to eq({move: "left", shout: "Let's move left!"})
+      is_expected.to eq({move: "left", shout: "I'm at 5, 10!"})
     end
   end
 end
